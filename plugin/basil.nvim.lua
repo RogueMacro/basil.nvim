@@ -1,8 +1,11 @@
-require("mini.icons").setup({
-	extension = {
-		bl = { glyph = "󰌪", hl = "MiniIconsGreen" },
-	},
-})
+local ok, icons = pcall(require, "mini.icons")
+if ok then
+	icons.setup({
+		extension = {
+			bl = { glyph = "󰌪", hl = "MiniIconsGreen" },
+		},
+	})
+end
 
 vim.treesitter.language.register("basil", "bl")
 vim.filetype.add({
