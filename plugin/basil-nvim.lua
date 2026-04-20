@@ -19,9 +19,7 @@ vim.api.nvim_create_autocmd("User", {
 	callback = function()
 		require("nvim-treesitter.parsers").basil = {
 			install_info = {
-				path = "~/Developer/tree-sitter-basil",
-				generate = true,
-				generate_from_json = false,
+				url = "https://github.com/RogueMacro/tree-sitter-basil",
 				queries = "queries/",
 			},
 			tier = 2,
