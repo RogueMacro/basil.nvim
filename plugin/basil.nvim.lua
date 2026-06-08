@@ -17,8 +17,8 @@ vim.filetype.add({
 	},
 })
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "TSUpdate",
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "basil",
 	callback = function()
 		require("nvim-treesitter.parsers").basil = {
 			install_info = {
@@ -27,5 +27,7 @@ vim.api.nvim_create_autocmd("User", {
 			},
 			tier = 2,
 		}
+
+		vim.bo.commentstring = "// %s"
 	end,
 })
