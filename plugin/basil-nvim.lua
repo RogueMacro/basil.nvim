@@ -17,21 +17,17 @@ vim.filetype.add({
 	},
 })
 
-local ok, treeman = pcall(require, "tree-sitter-manager")
-if ok then
-	treeman.setup({
-		languages = {
-			basil = {
-				install_info = {
-					url = "https://github.com/roguemacro/tree-sitter-basil",
-					-- revision = "f82709883cc6c111ae39ce1303162415641c949e",
-					queries = "queries/",
-					use_repo_queries = true,
-				},
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").basil = {
+			install_info = {
+				url = "https://github.com/roguemacro/tree-sitter-basil",
+				queries = "queries", -- copy queries/*.scm from the repo
 			},
-		},
-	})
-end
+		}
+	end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "basil",
